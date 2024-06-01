@@ -1,18 +1,17 @@
 import asyncio
 import logging
+import os
 
 from aiogram import Bot, Dispatcher
 from handlers import menu, create_order, list_order, maintenance
 from aiogram.fsm.storage.memory import MemoryStorage
-
-from config_reader import config
 
 logging.basicConfig(level=logging.INFO,
                     # filename="log/service.log",
                     # filemode="a",
                     format="%(asctime)s %(name)s %(levelname)s %(message)s")
 
-bot = Bot(token=config.bot_token.get_secret_value())
+bot = Bot(token=os.getenv('BOT_TOKEN'))
 
 
 async def main():
